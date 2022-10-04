@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Вход</title>
+</head>
+<body>
+    <div class="form_container">
+        <form class="form_sign-in not_active" id="form_sign-in">
+            <h2>Вход</h2>
+            <input type="email" name="email" id="input_sign-in_email" placeholder="Email">
+            <input type="password" name="password" id="input_sign-in_password" placeholder="Password">
+            <button type="button" id="button_sign-in">Войти</button>
+            <span>
+                У Вас нет аккаунта?
+                <a id="link_sign-in" href="#">Зарегистрироваться</a></span>
+                <a id="link_forgot-password" href="#">Я забыл пароль</a>
+        </form>
+        <form class="form_sign-up" id="form_sign-up">
+            <h2>Регистрация</h2>
+            <input type="email" name="login" id="input_sign-in_email" placeholder="Email">
+            <input type="password" name="password" id="input_sign-up_password" placeholder="Password">
+            <button type="button" id="button_sign-up">Зарегистрироваться</button>
+            <span>
+                У Вас есть аккаунт?
+                <a id="link_sign-in" href="#">Вход</a></span>
+                <a id="link_forgot-password" href="#">Я забыл пароль</a>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
