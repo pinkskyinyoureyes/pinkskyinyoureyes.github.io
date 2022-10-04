@@ -1,10 +1,56 @@
 body {
   font-family: "Raleway";
+  background-color: #262930;
 }
-body input {
+body .form_container {
+  display: flex;
+  justify-content: center;
+}
+body .form_container .form_sign-in, body .form_container .form_sign-up {
+  width: 230px;
+  height: 300px;
+  border-radius: 5px;
+  margin: 10px;
+  background-color: #ffffff;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body .form_container .form_sign-in input, body .form_container .form_sign-up input {
+  margin: 5px 10px 5px 10px;
   display: block;
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #668C82;
+  padding-left: 10px;
 }
-body a {
+body .form_container .not_active {
+  position: absolute;
+  z-index: 0;
+}
+body .form_container h2 {
+  text-transform: uppercase;
+  margin: 10px 0px 5px 0px;
+  color: #262930;
+}
+body .form_container a {
   text-decoration: none;
   display: block;
+  font-size: 16px;
+  margin: 5px;
+  color: #849ACB;
+}
+body .form_container span {
+  color: #262930;
+  margin: 5px;
+}
+body .form_container button {
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  margin: 5px;
+  text-transform: uppercase;
+  background-color: #668C82;
 }

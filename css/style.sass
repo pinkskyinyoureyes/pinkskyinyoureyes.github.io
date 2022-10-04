@@ -1,9 +1,60 @@
 body 
     font-family: 'Raleway'
+    background-color: #262930
 
-    input
-        display: block
+    .form_container
+        display: flex
+        justify-content: center
 
-    a
-        text-decoration: none
-        display: block
+        .form_sign-in, .form_sign-up
+            width: 230px
+            height: 300px
+            border-radius: 5px
+            margin: 10px
+            background-color: #ffffff
+            font-size: 20px
+            display: flex
+            flex-direction: column
+            align-items: center
+
+            input
+                margin: 5px 10px 5px 10px 
+                display: block
+                width: 200px
+                height: 30px
+                border-radius: 5px
+                border: 1px solid #668C82
+                padding-left: 10px
+
+
+        .not_active
+            position: absolute
+            z-index: 0
+
+        h2
+            text-transform: uppercase
+            margin: 10px 0px 5px 0px
+            color: #262930
+                   
+
+        a
+            text-decoration: none
+            display: block
+            font-size: 16px
+            margin: 5px
+            color: #849ACB
+        
+        span
+            color: #262930
+            margin: 5px
+
+
+        button
+            width: 200px
+            height: 30px
+            border-radius: 5px
+            margin: 5px 
+            text-transform: uppercase
+            background-color: #668C82
+                    
+
