@@ -13,12 +13,8 @@
 </head>
 <body>
     <div class="form_container">
-        <!-- <div class="modal" id="modal" >
-            <div class="modal_content" id="modal-content">
-                <span id="modal-text"></span>
-            </div>
-        </div> -->
-        <form class="form_sign-in not_active" id="form_sign-in">
+        <!-- вход -->
+        <form class="form_sign-in not_active" id="form_sign-in" action="#">
             <h2>Вход</h2>
             <input type="email" name="email" id="input_sign-in_email" placeholder="Email">
             <input type="password" name="password" id="input_sign-in_password" placeholder="Password">
@@ -27,7 +23,8 @@
             <span>У Вас нет аккаунта?</span>
             <a id="link_sign-in" href="#">Зарегистрироваться</a>
         </form>
-        <form class="form_sign-up" id="form_sign-up">
+        <!-- регистрация -->
+        <form class="form_sign-up" id="form_sign-up" action="#">
             <h2>Регистрация</h2>
             <input type="email" name="login" id="input_sign-up_email" placeholder="Email">
             <input type="password" name="password" id="input_sign-up_password" placeholder="Password">
@@ -35,6 +32,13 @@
             <span>У Вас есть аккаунт?</span>
             <a id="link_sign-up" href="#">Вход</a>
         </form>
+        <!-- модальное окно -->
+        <div class="modal" id="modal" >
+            <div class="modal_content" id="modal-content">
+                <span class="close"></span>
+                <span id="modal-text"></span>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
