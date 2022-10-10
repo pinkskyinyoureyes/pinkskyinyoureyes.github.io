@@ -4,6 +4,8 @@ const formSignInEl = document.querySelector('.form_sign-in')
 const linkSignUpEl = document.querySelector('#link_sign-up') //id
 const formSignUpEl = document.querySelector('.form_sign-up')
 
+const modalText = document.querySelector('#modal-text') //id
+
 linkSignInEl.addEventListener('click', change)
 linkSignUpEl.addEventListener('click', change)
 
@@ -22,7 +24,7 @@ function registration() {
 }
 
 //авторизация
-document.querySelector('#button_sign-in').onclick = authorization
+document.querySelector('#button_sign-in').onclick = authorization //id
 function authorization() {
     let emailStorage = window.localStorage.getItem('login')
     let passwordStorage = window.localStorage.getItem('password')
@@ -30,7 +32,11 @@ function authorization() {
     let passwordSignIn = document.querySelector('#input_sign-in_password') //id
     if (JSON.parse(emailStorage) === emailSignIn.value && JSON.parse(passwordStorage) === passwordSignIn.value) {
         console.log('Успешно')
+        modal.style.display = 'block'
+        modalText.innerText = 'Вход выполнен успешно!'
     } else {
+        modal.style.display = 'block'
+        modalText.innerText = 'Не верные данные. Попробуйте снова.'
         console.log('Не успешно')
     }
 }
