@@ -58,7 +58,8 @@ body
             background-color: #668C82
     .modal
         display: none
-        position: fixed
+        position: absolute
+        padding-top: 100px
         z-index: 1
         left: 0
         top: 0
@@ -68,17 +69,12 @@ body
         background-color: rgba(102, 140, 130, 0.7)
 
         .modal-content
-            margin: 15% auto
-            padding: 20px
+            display: flex
+            position: relative
+            margin: auto
+            padding: 0px
             border: 1px solid #888
-            width: 80%
+            width: 30%
+            height: 20%
             background-color: #fefefe
-
-            .close
-                float: right
-                font-size: 28px
-                font-weight: 700
-                color: #aaa
-                
-                    
-
+            border-radius: 5px
