@@ -44,7 +44,7 @@ function authorization() {
         modalTextEl.innerText = 'Вход выполнен успешно!'
     } else {
         modalEl.style.display = 'block'
-        modalTextEl.innerText = 'Не верные данные. Попробуйте снова.'
+        modalTextEl.innerText = 'Не верные данные.\nПопробуйте снова.'
         console.log('Не успешно')
     }
 }
