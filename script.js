@@ -10,7 +10,7 @@ function change() {
     formSignUpEl.classList.toggle('not_active')
 }
 
-//регистрация sign up
+//sign up
 let regexpEmail = /^([a-zA-Z0-9_\-\.]{3,})+\@([a-zA-Z0-9_\-\.]{3,10})+\.([a-zA-Z]{2,5})$/
 let regexpPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
 const modalEl = document.querySelector('.modal')
@@ -29,7 +29,7 @@ function registration() {
         }
 }
 
-//авторизация sign in
+//sign in
 document.querySelector('#button_sign-in').onclick = authorization
 function authorization() {
     let emailStorage = window.localStorage.getItem('login')
@@ -47,7 +47,7 @@ function authorization() {
         }
 }
 
-//закрыть модальное окно
+//close modal window
 window.onclick = function (event) {
     if (event.target == modalEl || event.target == modalTextEl || event.target == modalContentEl) {
         modalEl.style.display = 'none'
