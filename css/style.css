@@ -8,7 +8,7 @@ body .form_container {
 }
 body .form_container .form_sign-in, body .form_container .form_sign-up {
   width: 260px;
-  height: 450px;
+  height: 475px;
   border-radius: 5px;
   margin: 20px;
   background-color: #FFFFFF;
@@ -21,7 +21,7 @@ body .form_container .form_sign-in input, body .form_container .form_sign-up inp
   margin: 5px 10px 5px 10px;
   display: block;
   width: 200px;
-  height: 30px;
+  height: 35px;
   border-radius: 5px;
   border: 1px solid #668C82;
   padding-left: 10px;
@@ -53,7 +53,7 @@ body .form_container span {
 }
 body .form_container .button_sign-in, body .form_container .button_sign-up {
   width: 200px;
-  height: 30px;
+  height: 35px;
   border-radius: 5px;
   margin: 5px;
   text-transform: uppercase;
@@ -66,10 +66,14 @@ body .form_container .button_sign-in:hover, body .form_container .button_sign-up
   transition: background-color, box-shadow 0.3s;
 }
 body .form_container .button_sign-in_facebook, body .form_container .button_sign-up_facebook {
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
   width: 200px;
-  height: 30px;
+  height: 35px;
   border-radius: 5px;
   margin: 5px;
+  background: url(../img/facebook-logo.svg) no-repeat center left 10px;
   background-color: #1877F2;
   color: #ffffff;
 }
@@ -78,11 +82,15 @@ body .form_container .button_sign-in_facebook:hover, body .form_container .butto
   transition: background-color, box-shadow 0.3s;
 }
 body .form_container .button_sign-in_google, body .form_container .button_sign-up_google {
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
   width: 200px;
-  height: 30px;
+  height: 35px;
   border-radius: 5px;
   margin: 5px;
-  background-color: #dbdbdb;
+  background: url(../img/google-logo.svg) no-repeat center left 10px;
+  background-color: #ebebeb;
   color: rgba(0, 0, 0, 0.54);
 }
 body .form_container .button_sign-in_google:hover, body .form_container .button_sign-up_google:hover {
@@ -90,10 +98,14 @@ body .form_container .button_sign-in_google:hover, body .form_container .button_
   transition: background-color, box-shadow 0.3s;
 }
 body .form_container .button_sign-in_apple, body .form_container .button_sign-up_apple {
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
   width: 200px;
-  height: 30px;
+  height: 35px;
   border-radius: 5px;
   margin: 5px;
+  background: url(../img/apple-logo.svg) no-repeat center left 10px;
   background-color: #000000;
   color: #ffffff;
 }
