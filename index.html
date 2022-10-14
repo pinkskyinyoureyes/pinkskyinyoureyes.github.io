@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Вход</title>
+</head>
+<body>
+    <div class="form_container">
+        <!-- sign in-->
+        <form class="form_sign-in not_active" id="form_sign-in" action="#">
+            <h2>Sign in</h2>
+            <input type="email" name="email" id="input_sign-in_email" placeholder="Email">
+            <input type="password" name="password" id="input_sign-in_password" placeholder="Password">
+            <button type="button" id="button_sign-in" class="button_sign-in">Sign in</button>
+            <button type="button" id="button_sign-in_facebook" class="button_sign-in_facebook">Sign In with Facebook</button>
+            <button type="button" id="button_sign-in_google" class="button_sign-in_google">Sign In with Google</button>
+            <button type="button" id="button_sign-in_apple" class="button_sign-in_apple">Sign In with Apple</button>
+            <a id="link_forgot-password" href="#">I forgot password</a>
+            <span>Don't have an account?</span>
+            <a id="link_sign-in" href="#">Registration</a>
+        </form>
+        <!-- sign up-->
+        <form class="form_sign-up" id="form_sign-up" action="#">
+            <h2>Registration</h2>
+            <input type="email" name="login" id="input_sign-up_email" placeholder="Email">
+            <input type="password" name="password" id="input_sign-up_password" placeholder="Password">
+            <input type="tel" name="phone" id="input_sign-up_phone" placeholder="Phone">
+            <input type="text" name="country" id="input_sign-up_country" placeholder="Country">
+            <button type="button" id="button_sign-up" class="button_sign-up">Sign up</button>
+            <button type="button" id="button_sign-up_facebook" class="button_sign-up_facebook">Sign In with Facebook</button>
+            <button type="button" id="button_sign-up_google" class="button_sign-up_google">Sign In with Google</button>
+            <button type="button" id="button_sign-up_apple" class="button_sign-up_apple">Sign In with Apple</button>
+            <span>Do you have an account?</span>
+            <a id="link_sign-up" href="#">Sign in</a>
+        </form>
+        <!-- modal window -->
+        <div class="modal">
+            <div class="modal_content">
+                <span id="modal-text"></span>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
