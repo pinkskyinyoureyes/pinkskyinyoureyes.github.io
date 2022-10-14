@@ -13,11 +13,14 @@ function change() {
 //sign up
 let regexpEmail = /^([a-zA-Z0-9_\-\.]{3,})+\@([a-zA-Z0-9_\-\.]{3,10})+\.([a-zA-Z]{2,5})$/
 let regexpPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
+// let regexpPhone = /^()$/
 const modalEl = document.querySelector('.modal')
 const modalContentEl = document.querySelector('.modal_content')
 const modalTextEl = document.querySelector('#modal-text')
 const emailSignUp = document.querySelector('#input_sign-up_email')
 const passwordSignUp = document.querySelector('#input_sign-up_password')
+const phoneSignUp = document.querySelector('#input_sign-up_phone') //PHONE
+const countrySignUp = document.querySelector('#input_sign-up_country') //COUNTRY
 document.querySelector('#button_sign-up').onclick = registration
 function registration() {
     if (regexpEmail.test(emailSignUp.value) && regexpPassword.test(passwordSignUp.value)) {
