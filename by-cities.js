@@ -838,4 +838,4 @@ const belarus =
                 ]
             }
         ]
-    }
+}

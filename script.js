@@ -13,16 +13,22 @@ function change() {
 //sign up
 let regexpEmail = /^([a-zA-Z0-9_\-\.]{3,})+\@([a-zA-Z0-9_\-\.]{3,10})+\.([a-zA-Z]{2,5})$/
 let regexpPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
+let regexpPhone = /^[\d\+][\d(\)\ -]{7,14}\d$/
+let regexpCountry = /^([A-Za-z\.]{3,25})$/
 const modalEl = document.querySelector('.modal')
 const modalContentEl = document.querySelector('.modal_content')
 const modalTextEl = document.querySelector('#modal-text')
 const emailSignUp = document.querySelector('#input_sign-up_email')
 const passwordSignUp = document.querySelector('#input_sign-up_password')
+const phoneSignUp = document.querySelector('#input_sign-up_phone')
+const countrySignUp = document.querySelector('#input_sign-up_country') //COUNTRY
 document.querySelector('#button_sign-up').onclick = registration
 function registration() {
-    if (regexpEmail.test(emailSignUp.value) && regexpPassword.test(passwordSignUp.value)) {
+    if (regexpEmail.test(emailSignUp.value) && regexpPassword.test(passwordSignUp.value) && regexpPhone.test(phoneSignUp.value) && regexpCountry.test(countrySignUp.value)) {
         window.localStorage.setItem('login', JSON.stringify(emailSignUp.value))
         window.localStorage.setItem('password', JSON.stringify(passwordSignUp.value))
+        window.localStorage.setItem('phone', JSON.stringify(phoneSignUp.value))
+        window.localStorage.setItem('country', JSON.stringify(countrySignUp.value))
             console.log("true")
         } else {
             console.log("false")
