@@ -11,17 +11,17 @@ function change() {
 }
 
 //sign up
-let regexpEmail = /^([a-zA-Z0-9_\-\.]{3,})+\@([a-zA-Z0-9_\-\.]{3,10})+\.([a-zA-Z]{2,5})$/
-let regexpPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
+let regexpEmail = /^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,7}$/i
+let regexpPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}/
 let regexpPhone = /^[\d\+][\d(\)\ -]{7,14}\d$/
-let regexpCountry = /^([A-Za-z\.]{3,25})$/
+let regexpCountry = /^([A-Za-zА-Яа-я\.]{3,25})$/
 const modalEl = document.querySelector('.modal')
 const modalContentEl = document.querySelector('.modal_content')
 const modalTextEl = document.querySelector('#modal-text')
 const emailSignUp = document.querySelector('#input_sign-up_email')
 const passwordSignUp = document.querySelector('#input_sign-up_password')
 const phoneSignUp = document.querySelector('#input_sign-up_phone')
-const countrySignUp = document.querySelector('#input_sign-up_country') //COUNTRY
+const countrySignUp = document.querySelector('#input_sign-up_country')
 document.querySelector('#button_sign-up').onclick = registration
 function registration() {
     if (regexpEmail.test(emailSignUp.value) && regexpPassword.test(passwordSignUp.value) && regexpPhone.test(phoneSignUp.value) && regexpCountry.test(countrySignUp.value)) {
@@ -29,9 +29,13 @@ function registration() {
         window.localStorage.setItem('password', JSON.stringify(passwordSignUp.value))
         window.localStorage.setItem('phone', JSON.stringify(phoneSignUp.value))
         window.localStorage.setItem('country', JSON.stringify(countrySignUp.value))
-            console.log("true")
-        } else {
-            console.log("false")
+        modalEl.style.display = 'block'
+        modalTextEl.innerText = 'Are you registred!'
+        console.log(true)
+    } else {
+        modalEl.style.display = 'block'
+        modalTextEl.innerText = 'Incorrect data.\nTry again.'
+        console.log(false)
         }
 }
 
@@ -44,12 +48,12 @@ function authorization() {
     let passwordSignIn = document.querySelector('#input_sign-in_password')
         if (JSON.parse(emailStorage) === emailSignIn.value && JSON.parse(passwordStorage) === passwordSignIn.value) {
             modalEl.style.display = 'block'
-            modalTextEl.innerText = 'Вход выполнен успешно!'
-            console.log("true")
+            modalTextEl.innerText = 'Sign in successful!'
+            console.log(true)
         } else {
             modalEl.style.display = 'block'
-            modalTextEl.innerText = 'Не верные данные.\nПопробуйте снова.'
-            console.log("false")
+            modalTextEl.innerText = 'Incorrect data.\nTry again.'
+            console.log(false)
         }
 }
 
