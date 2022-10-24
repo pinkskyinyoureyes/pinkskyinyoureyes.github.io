@@ -1,4 +1,6 @@
-//переключение вход/регистрация
+import { form } from './form.js'
+
+//switching forms
 const linkSignInEl = document.querySelector('#link_sign-in')
 const formSignInEl = document.querySelector('.form_sign-in')
 const linkSignUpEl = document.querySelector('#link_sign-up')
@@ -9,6 +11,8 @@ function change() {
     formSignInEl.classList.toggle('not_active')
     formSignUpEl.classList.toggle('not_active')
 }
+
+export default { linkSignInEl, linkSignUpEl, formSignInEl, formSignUpEl }
 
 //sign up
 let regexpEmail = /^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,7}$/i
@@ -36,7 +40,7 @@ function registration() {
         modalEl.style.display = 'block'
         modalTextEl.innerText = 'Incorrect data.\nTry again.'
         console.log(false)
-        }
+    }
 }
 
 //sign in
