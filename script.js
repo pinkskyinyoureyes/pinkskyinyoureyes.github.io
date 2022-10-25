@@ -1,18 +1,16 @@
-import { form } from './form.js'
+import Form from './form.js'
 
 //switching forms
 const linkSignInEl = document.querySelector('#link_sign-in')
 const formSignInEl = document.querySelector('.form_sign-in')
 const linkSignUpEl = document.querySelector('#link_sign-up')
 const formSignUpEl = document.querySelector('.form_sign-up')
-linkSignInEl.addEventListener('click', change)
-linkSignUpEl.addEventListener('click', change)
-function change() {
-    formSignInEl.classList.toggle('not_active')
-    formSignUpEl.classList.toggle('not_active')
-}
-
-export default { linkSignInEl, linkSignUpEl, formSignInEl, formSignUpEl }
+// linkSignInEl.addEventListener('click', change)
+// linkSignUpEl.addEventListener('click', change)
+// function change() {
+//     formSignInEl.classList.toggle('not_active')
+//     formSignUpEl.classList.toggle('not_active')
+// }
 
 //sign up
 let regexpEmail = /^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,7}$/i
@@ -67,3 +65,6 @@ window.onclick = function (event) {
         modalEl.style.display = 'none'
     }
 }
+
+const form2 = new Form(linkSignInEl, linkSignUpEl, formSignInEl, formSignUpEl)
+form2.start()
