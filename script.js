@@ -5,12 +5,6 @@ const linkSignInEl = document.querySelector('#link_sign-in')
 const formSignInEl = document.querySelector('.form_sign-in')
 const linkSignUpEl = document.querySelector('#link_sign-up')
 const formSignUpEl = document.querySelector('.form_sign-up')
-// linkSignInEl.addEventListener('click', change)
-// linkSignUpEl.addEventListener('click', change)
-// function change() {
-//     formSignInEl.classList.toggle('not_active')
-//     formSignUpEl.classList.toggle('not_active')
-// }
 
 //sign up
 let regexpEmail = /^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,7}$/i
@@ -43,11 +37,11 @@ function registration() {
 
 //sign in
 document.querySelector('#button_sign-in').onclick = authorization
+const emailSignIn = document.querySelector('#input_sign-in_email')
+const passwordSignIn = document.querySelector('#input_sign-in_password')
 function authorization() {
     let emailStorage = window.localStorage.getItem('login')
     let passwordStorage = window.localStorage.getItem('password')
-    let emailSignIn = document.querySelector('#input_sign-in_email')
-    let passwordSignIn = document.querySelector('#input_sign-in_password')
         if (JSON.parse(emailStorage) === emailSignIn.value && JSON.parse(passwordStorage) === passwordSignIn.value) {
             modalEl.style.display = 'block'
             modalTextEl.innerText = 'Sign in successful!'
@@ -66,5 +60,16 @@ window.onclick = function (event) {
     }
 }
 
-const form2 = new Form(linkSignInEl, linkSignUpEl, formSignInEl, formSignUpEl)
+const formOptions = {
+    input: {
+        signIn: { email: emailSignIn, password: passwordSignIn },
+        signUp: { email: emailSignUp, password: passwordSignUp, phone: phoneSignUp, city: countrySignUp }
+    },
+    forms: { signIn: formSignInEl, signUp: formSignUpEl },
+    regExp: { email: regexpEmail, password: regexpPassword, phone: regexpPhone, city: regexpCountry },
+    modal: { container: modalEl, text: modalTextEl },
+    links: { signIn: linkSignInEl, signUp: linkSignUpEl }
+}
+
+const form2 = new Form(formOptions)
 form2.start()
