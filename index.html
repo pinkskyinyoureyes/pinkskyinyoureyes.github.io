@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Вход</title>
 </head>
-<body>
+<body id="body">
     <div class="form_container">
         <!-- sign in-->
         <form class="form_sign-in not_active" id="form_sign-in" action="#">
@@ -47,6 +47,26 @@
             </div>
         </div>
     </div>
+    <table id="users_table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>User</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="number"></th>
+                <th class="user"></th>
+                <th class="buttons">
+                    <button type="button" id="table__button_view" class="table__button_view">View</button>
+                    <button type="button" id="table__button_edit" class="table__button_edit">Edit</button>
+                    <button type="button" id="table__button_delete" class="table__button_delete">Delete</button>
+                </th>
+            </tr>
+        </tbody>
+    </table>
     <script type="module" src="./js/script.js"></script>
 </body>
 </html>

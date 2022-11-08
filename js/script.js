@@ -1,10 +1,13 @@
 import Form from './form.js'
 
+
+
 //switching forms
 const linkSignInEl = document.querySelector('#link_sign-in')
 const formSignInEl = document.querySelector('.form_sign-in')
 const linkSignUpEl = document.querySelector('#link_sign-up')
 const formSignUpEl = document.querySelector('.form_sign-up')
+const usersTable = document.querySelector('#users_table')
 
 //sign up
 let regexpEmail = /^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,7}$/i
@@ -26,6 +29,7 @@ function registration() {
         window.localStorage.setItem('phone', JSON.stringify(phoneSignUp.value))
         window.localStorage.setItem('country', JSON.stringify(countrySignUp.value))
         modalEl.style.display = 'block'
+        usersTable.style.display = 'block'
         modalTextEl.innerText = 'Are you registred!'
         console.log(true)
     } else {
@@ -44,6 +48,7 @@ function authorization() {
     let passwordStorage = window.localStorage.getItem('password')
         if (JSON.parse(emailStorage) === emailSignIn.value && JSON.parse(passwordStorage) === passwordSignIn.value) {
             modalEl.style.display = 'block'
+            usersTable.style.display = 'block'
             modalTextEl.innerText = 'Sign in successful!'
             console.log(true)
         } else {
@@ -73,3 +78,39 @@ const formOptions = {
 
 const form2 = new Form(formOptions)
 form2.start()
+
+
+
+// let table = document.createElement('table')
+// let thead = document.createElement('thead')
+// let tbody = document.createElement('tbody')
+
+// table.appendChild(thead)
+// table.appendChild(tbody)
+// //
+// let row_1 = document.createElement('tr')
+// let heading_1 = document.createElement('th')
+// heading_1.innerHTML = '№'
+// let heading_2 = document.createElement('th')
+// heading_2.innerHTML = 'User'
+// let heading_3 = document.createElement('th')
+// heading_3.innerHTML = 'Actions'
+
+// let row_2 = document.createElement('tr')
+// let row_2_data_1 = document.createElement('th')
+// row_2_data_1.innerHTML = ''
+// let row_2_data_2 = document.createElement('th')
+// row_2_data_2.innerHTML = ''
+// let row_2_data_3 = document.createElement('th')
+// row_2_data_3.innerHTML = ''
+
+// row_1.appendChild(heading_1)
+// row_1.appendChild(heading_2)
+// row_1.appendChild(heading_3)
+// thead.appendChild(row_1)
+// row_2.appendChild(row_2_data_1)
+// row_2.appendChild(row_2_data_2)
+// row_2.appendChild(row_2_data_3)
+// tbody.appendChild(row_2)
+
+// document.getElementById('body').appendChild(table)
