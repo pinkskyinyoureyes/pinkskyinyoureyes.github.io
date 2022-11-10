@@ -151,3 +151,7 @@ body table th, body table td {
   border: 1px solid #ffffff;
   color: #ffffff;
 }
+body table th .table__button_view, body table th .table__button_edit, body table th .table__button_delete, body table td .table__button_view, body table td .table__button_edit, body table td .table__button_delete {
+  border-radius: 5px;
+  padding: 5px;
+}
