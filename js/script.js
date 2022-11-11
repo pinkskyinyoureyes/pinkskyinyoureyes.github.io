@@ -8,13 +8,16 @@ const formSignInEl = document.querySelector('.form_sign-in')
 const linkSignUpEl = document.querySelector('#link_sign-up')
 const formSignUpEl = document.querySelector('.form_sign-up')
 const usersTable = document.querySelector('#users_table') //NEW
-const usersCell = document.querySelector('#cell__users') //NEW
 
 //sign up
-let regexpEmail = /^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,7}$/i
-let regexpPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}/
-let regexpPhone = /^[\d\+][\d(\)\ -]{7,14}\d$/
-let regexpCountry = /^([A-Za-zА-Яа-я\.]{3,25})$/
+let regexpEmail = /([A-Za-z\.]{2,20})+\@([A-Za-z\.]{2,20})/
+    // /^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,7}$/i
+let regexpPassword = /([A-Za-z\.]{2,20})/
+    // /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}/
+let regexpPhone = /([A-Za-z\.]{2,20})/
+    // /^[\d\+][\d(\)\ -]{7,14}\d$/
+let regexpCountry = /([A-Za-z\.]{2,20})/
+    // /^([A-Za-zА-Яа-я\.]{3,25})$/
 const modalEl = document.querySelector('.modal')
 const modalContentEl = document.querySelector('.modal_content')
 const modalTextEl = document.querySelector('#modal-text')
@@ -42,14 +45,11 @@ document.querySelector('#button_sign-in').onclick = authorization
 const emailSignIn = document.querySelector('#input_sign-in_email')
 const passwordSignIn = document.querySelector('#input_sign-in_password')
 function authorization() {
-    let emailStorage = localStorage.getItem('login')
-    let passwordStorage = localStorage.getItem('password')
-    let phoneStorage = localStorage.getItem('phone') //NEW
-    let countryStorage = localStorage.getItem('country') //NEW
-        if (JSON.parse(emailStorage) === emailSignIn.value && JSON.parse(passwordStorage) === passwordSignIn.value) {
+    let usersFromLocalStorage = JSON.parse(localStorage.getItem('users'))
+    let findKey = usersFromLocalStorage.find(elem => elem.userEmail === emailSignIn.value && elem.userPassword === passwordSignIn.value)
+        if (findKey) {
             modalEl.style.display = 'block'
             usersTable.style.display = 'block' //NEW
-            usersCell.emailStorage
             modalTextEl.innerText = 'Sign in successful!'
             console.log(true)
         } else {
@@ -96,6 +96,38 @@ function addUsersToLocalStorage() {
     allUsers.push(userData)
     localStorage.setItem('users', JSON.stringify(allUsers))
 }
+
+// users table
+function addCell() {
+    const newCell = document.querySelector('users_table_body')
+        return newCell.insertAdjacentHTML('afterbegin', `
+            <tr>
+                <th class="number"></th>
+                <th id="cell__users" class="users"></th>
+                <th class="buttons">
+                    <button type="button" id="table__button_view" class="table__button_view">View</button>
+                    <button type="button" id="table__button_edit" class="table__button_edit">Edit</button>
+                    <button type="button" id="table__button_delete" class="table__button_delete">Delete</button>
+                </th>
+            </tr>
+        `)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // let table = document.createElement('table')
 // let thead = document.createElement('thead')
