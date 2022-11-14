@@ -143,6 +143,10 @@ body .modal .modal_content {
 }
 body table {
   display: none;
+  margin: auto;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   border-collapse: collapse;
   border-spacing: 0;
 }

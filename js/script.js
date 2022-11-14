@@ -7,7 +7,7 @@ const linkSignInEl = document.querySelector('#link_sign-in')
 const formSignInEl = document.querySelector('.form_sign-in')
 const linkSignUpEl = document.querySelector('#link_sign-up')
 const formSignUpEl = document.querySelector('.form_sign-up')
-const usersTable = document.querySelector('#users_table') //NEW
+const usersTable = document.querySelector('#users_table')
 
 //sign up
 let regexpEmail = /([A-Za-z\.]{2,20})+\@([A-Za-z\.]{2,20})/
@@ -28,9 +28,11 @@ const countrySignUp = document.querySelector('#input_sign-up_country')
 document.querySelector('#button_sign-up').onclick = registration
 function registration() {
     if (regexpEmail.test(emailSignUp.value) && regexpPassword.test(passwordSignUp.value) && regexpPhone.test(phoneSignUp.value) && regexpCountry.test(countrySignUp.value)) {
-        addUsersToLocalStorage() //NEW
+        addUsersToLocalStorage()
         modalEl.style.display = 'block'
-        usersTable.style.display = 'block' //NEW
+        usersTable.style.display = 'block'
+        addCell()
+        selectUsersFromLocalStorage()
         modalTextEl.innerText = 'Are you registred!'
         console.log(true)
     } else {
@@ -44,12 +46,16 @@ function registration() {
 document.querySelector('#button_sign-in').onclick = authorization
 const emailSignIn = document.querySelector('#input_sign-in_email')
 const passwordSignIn = document.querySelector('#input_sign-in_password')
+
+
+
 function authorization() {
     let usersFromLocalStorage = JSON.parse(localStorage.getItem('users'))
     let findKey = usersFromLocalStorage.find(elem => elem.userEmail === emailSignIn.value && elem.userPassword === passwordSignIn.value)
         if (findKey) {
             modalEl.style.display = 'block'
-            usersTable.style.display = 'block' //NEW
+            usersTable.style.display = 'block'
+            selectUsersFromLocalStorage()
             modalTextEl.innerText = 'Sign in successful!'
             console.log(true)
         } else {
@@ -98,20 +104,58 @@ function addUsersToLocalStorage() {
 }
 
 // users table
-function addCell() {
-    const newCell = document.querySelector('users_table_body')
+function addCell(useremail) {
+    const newCell = document.querySelector('.users_table_body')
         return newCell.insertAdjacentHTML('afterbegin', `
             <tr>
                 <th class="number"></th>
-                <th id="cell__users" class="users"></th>
+                <th class="users">${useremail}</th>
                 <th class="buttons">
-                    <button type="button" id="table__button_view" class="table__button_view">View</button>
-                    <button type="button" id="table__button_edit" class="table__button_edit">Edit</button>
-                    <button type="button" id="table__button_delete" class="table__button_delete">Delete</button>
+                    <button type="button" class="table__button_view">View</button>
+                    <button type="button" class="table__button_edit">Edit</button>
+                    <button type="button" class="table__button_delete">Delete</button>
                 </th>
             </tr>
         `)
 }
+
+
+const tableNumberUser = document.querySelector('.number')
+const tableUsersCell = document.querySelector('.users')
+const tableButtonView = document.querySelector('.table__button_view')
+const tableButtonEdit = document.querySelector('.table__button_edit')
+const tableButtonDelete = document.querySelector('.table__button_delete')
+
+
+function selectUsersFromLocalStorage() {
+    const getArrayFromlocalStorage = JSON.parse(localStorage.getItem('users'))
+    for (let i = 0; i < getArrayFromlocalStorage.length; i++) {
+        const getUserEmail = getArrayFromlocalStorage[i].userEmail
+        addCell(getUserEmail)
+        console.log(getUserEmail)        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+// function addNewUserToTable() {
+//     const newUser = getUsersFromLocalStorage()
+//     const html = newUser.length ? newUser.map(toTable).join('') : `<th class="users">Пользователей пока нет</th>`
+//     const tableUsersCell = document.querySelector('users')
+//     tableUsersCell.innerHTML = html
+// }
+// function toTable() {
+//     return '11'
+// }
+
 
 
 
