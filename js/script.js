@@ -31,8 +31,7 @@ function registration() {
         addUsersToLocalStorage()
         modalEl.style.display = 'block'
         usersTable.style.display = 'block'
-        addCell()
-        selectUsersFromLocalStorage()
+        showUsersFromLocalStorage()
         modalTextEl.innerText = 'Are you registred!'
         console.log(true)
     } else {
@@ -47,15 +46,13 @@ document.querySelector('#button_sign-in').onclick = authorization
 const emailSignIn = document.querySelector('#input_sign-in_email')
 const passwordSignIn = document.querySelector('#input_sign-in_password')
 
-
-
 function authorization() {
     let usersFromLocalStorage = JSON.parse(localStorage.getItem('users'))
     let findKey = usersFromLocalStorage.find(elem => elem.userEmail === emailSignIn.value && elem.userPassword === passwordSignIn.value)
         if (findKey) {
             modalEl.style.display = 'block'
             usersTable.style.display = 'block'
-            selectUsersFromLocalStorage()
+            showUsersFromLocalStorage()
             modalTextEl.innerText = 'Sign in successful!'
             console.log(true)
         } else {
@@ -104,11 +101,11 @@ function addUsersToLocalStorage() {
 }
 
 // users table
-function addCell(useremail) {
+function addCell(usercounter, useremail) {
     const newCell = document.querySelector('.users_table_body')
         return newCell.insertAdjacentHTML('afterbegin', `
             <tr>
-                <th class="number"></th>
+                <th class="number">${usercounter}</th>
                 <th class="users">${useremail}</th>
                 <th class="buttons">
                     <button type="button" class="table__button_view">View</button>
@@ -119,54 +116,22 @@ function addCell(useremail) {
         `)
 }
 
-
 const tableNumberUser = document.querySelector('.number')
 const tableUsersCell = document.querySelector('.users')
 const tableButtonView = document.querySelector('.table__button_view')
 const tableButtonEdit = document.querySelector('.table__button_edit')
 const tableButtonDelete = document.querySelector('.table__button_delete')
 
-
-function selectUsersFromLocalStorage() {
+function showUsersFromLocalStorage() {
+    let userCounter = 1
     const getArrayFromlocalStorage = JSON.parse(localStorage.getItem('users'))
     for (let i = 0; i < getArrayFromlocalStorage.length; i++) {
         const getUserEmail = getArrayFromlocalStorage[i].userEmail
-        addCell(getUserEmail)
-        console.log(getUserEmail)        
+        addCell(userCounter, getUserEmail)
+        userCounter++
+        console.log(userCounter)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-// function addNewUserToTable() {
-//     const newUser = getUsersFromLocalStorage()
-//     const html = newUser.length ? newUser.map(toTable).join('') : `<th class="users">Пользователей пока нет</th>`
-//     const tableUsersCell = document.querySelector('users')
-//     tableUsersCell.innerHTML = html
-// }
-// function toTable() {
-//     return '11'
-// }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
