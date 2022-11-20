@@ -9,7 +9,6 @@ const linkSignUpEl = document.querySelector('#link_sign-up')
 const formSignUpEl = document.querySelector('.form_sign-up')
 const usersTable = document.querySelector('#users_table')
 
-//sign up
 let regexpEmail = /([A-Za-z\.]{2,20})+\@([A-Za-z\.]{2,20})/
     // /^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,7}$/i
 let regexpPassword = /([A-Za-z\.]{2,20})/
@@ -20,11 +19,13 @@ let regexpCountry = /([A-Za-z\.]{2,20})/
     // /^([A-Za-zА-Яа-я\.]{3,25})$/
 const modalEl = document.querySelector('.modal')
 const modalContentEl = document.querySelector('.modal_content')
-const modalTextEl = document.querySelector('#modal-text')
+const modalTextEl = document.querySelector('#modal_text')
 const emailSignUp = document.querySelector('#input_sign-up_email')
 const passwordSignUp = document.querySelector('#input_sign-up_password')
 const phoneSignUp = document.querySelector('#input_sign-up_phone')
 const countrySignUp = document.querySelector('#input_sign-up_country')
+
+//sign up
 document.querySelector('#button_sign-up').onclick = registration
 function registration() {
     if (regexpEmail.test(emailSignUp.value) && regexpPassword.test(passwordSignUp.value) && regexpPhone.test(phoneSignUp.value) && regexpCountry.test(countrySignUp.value)) {
@@ -45,15 +46,15 @@ function registration() {
 document.querySelector('#button_sign-in').onclick = authorization
 const emailSignIn = document.querySelector('#input_sign-in_email')
 const passwordSignIn = document.querySelector('#input_sign-in_password')
-
 function authorization() {
     let usersFromLocalStorage = JSON.parse(localStorage.getItem('users'))
-    let findKey = usersFromLocalStorage.find(elem => elem.userEmail === emailSignIn.value && elem.userPassword === passwordSignIn.value)
+    let findKey = usersFromLocalStorage.find(elem => elem.Email === emailSignIn.value && elem.Password === passwordSignIn.value)
         if (findKey) {
             modalEl.style.display = 'block'
             usersTable.style.display = 'block'
             showUsersFromLocalStorage()
             modalTextEl.innerText = 'Sign in successful!'
+            tableShell.addEventListener('click', (event) => showUsersData(event))
             console.log(true)
         } else {
             modalEl.style.display = 'block'
@@ -90,84 +91,66 @@ function getUsersFromLocalStorage() {
 
 function addUsersToLocalStorage() {
     const userData = {
-        userEmail: emailSignUp.value,
-        userPassword: passwordSignUp.value,
-        userPhone: phoneSignUp.value,
-        userCountry: countrySignUp.value
+        Email: emailSignUp.value,
+        Password: passwordSignUp.value,
+        Phone: phoneSignUp.value,
+        Country: countrySignUp.value
     }
     const allUsers = getUsersFromLocalStorage()
     allUsers.push(userData)
     localStorage.setItem('users', JSON.stringify(allUsers))
 }
 
-// users table
-function addCell(usercounter, useremail) {
+// create users table
+function addCell(usernumber, useremail) {
     const newCell = document.querySelector('.users_table_body')
         return newCell.insertAdjacentHTML('afterbegin', `
             <tr>
-                <th class="number">${usercounter}</th>
-                <th class="users">${useremail}</th>
+                <th class="number">${usernumber}</th>
+                <th class="users" data-table-users>${useremail}</th>
                 <th class="buttons">
-                    <button type="button" class="table__button_view">View</button>
-                    <button type="button" class="table__button_edit">Edit</button>
-                    <button type="button" class="table__button_delete">Delete</button>
+                    <button type="button" class="table__button_view" data-table-btn-view='${useremail}'>View</button>
+                    <button type="button" class="table__button_edit" data-table-btn-edit='${useremail}'>Edit</button>
+                    <button type="button" class="table__button_delete" data-table-btn-delete='${useremail}'>Delete</button>
                 </th>
             </tr>
         `)
 }
 
-const tableNumberUser = document.querySelector('.number')
-const tableUsersCell = document.querySelector('.users')
-const tableButtonView = document.querySelector('.table__button_view')
-const tableButtonEdit = document.querySelector('.table__button_edit')
-const tableButtonDelete = document.querySelector('.table__button_delete')
-
+//show user number and email
 function showUsersFromLocalStorage() {
-    let userCounter = 1
-    const getArrayFromlocalStorage = JSON.parse(localStorage.getItem('users'))
-    for (let i = 0; i < getArrayFromlocalStorage.length; i++) {
-        const getUserEmail = getArrayFromlocalStorage[i].userEmail
-        addCell(userCounter, getUserEmail)
-        userCounter++
-        console.log(userCounter)
+    let userNumber = 1
+    const getArrayFromLocalStorage = JSON.parse(localStorage.getItem('users'))
+    for (let i = 0; i < getArrayFromLocalStorage.length; i++) {
+        const getUserEmail = getArrayFromLocalStorage[i].Email
+        addCell(userNumber, getUserEmail)
+        userNumber++
+        console.log(userNumber)
     }
 }
 
+const tableShell = document.querySelector('.wrapper')
+const tableNumberUser = document.querySelectorAll('.number')
+const tableUsersCell = document.querySelectorAll('[data-table-users]')
+const tableButtonView = document.querySelectorAll('[data-table-btn-view]')
+const tableButtonEdit = document.querySelectorAll('[data-table-btn-edit]')
+const tableButtonDelete = document.querySelectorAll('[data-table-btn-delete]')
 
+function createModalUsersData(email, password, phone, country) {
+    const addElementsToModal = document.querySelector('.modal_content')
+        return addElementsToModal.insertAdjacentHTML('afterbegin', `
+            <span id="modal-text__user-email">Email: ${email}</span>
+            <span id="modal-text__user-password">Password: ${password}</span>
+            <span id="modal-text__user-phone">Phone: ${phone}</span>
+            <span id="modal-text__user-country">Country: ${country}</span>
+        `)
+}
 
-
-
-
-// let table = document.createElement('table')
-// let thead = document.createElement('thead')
-// let tbody = document.createElement('tbody')
-
-// table.appendChild(thead)
-// table.appendChild(tbody)
-
-// let row_1 = document.createElement('tr')
-// let heading_1 = document.createElement('th')
-// heading_1.innerHTML = '№'
-// let heading_2 = document.createElement('th')
-// heading_2.innerHTML = 'User'
-// let heading_3 = document.createElement('th')
-// heading_3.innerHTML = 'Actions'
-
-// let row_2 = document.createElement('tr')
-// let row_2_data_1 = document.createElement('th')
-// row_2_data_1.innerHTML = ''
-// let row_2_data_2 = document.createElement('th')
-// row_2_data_2.innerHTML = ''
-// let row_2_data_3 = document.createElement('th')
-// row_2_data_3.innerHTML = ''
-
-// row_1.appendChild(heading_1)
-// row_1.appendChild(heading_2)
-// row_1.appendChild(heading_3)
-// thead.appendChild(row_1)
-// row_2.appendChild(row_2_data_1)
-// row_2.appendChild(row_2_data_2)
-// row_2.appendChild(row_2_data_3)
-// tbody.appendChild(row_2)
-
-// document.getElementById('body').appendChild(table)
+function showUsersData(event) {
+    const getArrayFromLocalStorage = JSON.parse(localStorage.getItem('users'))
+    const tableUserEmail = event.target.dataset.tableBtnView
+    const findItemInLocalStorage = getArrayFromLocalStorage.find(element => element.Email === tableUserEmail)
+    console.log(findItemInLocalStorage)
+    modalEl.style.display = 'block'
+    modalTextEl.innerText = Object.entries(findItemInLocalStorage).join('\n').replaceAll(',', ': ')
+}
