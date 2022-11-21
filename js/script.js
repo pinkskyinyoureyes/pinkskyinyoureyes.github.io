@@ -32,8 +32,9 @@ function registration() {
         addUsersToLocalStorage()
         modalEl.style.display = 'block'
         usersTable.style.display = 'block'
-        showUsersFromLocalStorage()
         modalTextEl.innerText = 'Are you registred!'
+        showUsersFromLocalStorage()
+        tableShell.addEventListener('click', (event) => showUsersData(event))
         console.log(true)
     } else {
         modalEl.style.display = 'block'
@@ -52,8 +53,8 @@ function authorization() {
         if (findKey) {
             modalEl.style.display = 'block'
             usersTable.style.display = 'block'
-            showUsersFromLocalStorage()
             modalTextEl.innerText = 'Sign in successful!'
+            showUsersFromLocalStorage()
             tableShell.addEventListener('click', (event) => showUsersData(event))
             console.log(true)
         } else {
@@ -153,4 +154,10 @@ function showUsersData(event) {
     console.log(findItemInLocalStorage)
     modalEl.style.display = 'block'
     modalTextEl.innerText = Object.entries(findItemInLocalStorage).join('\n').replaceAll(',', ': ')
+}
+
+function editUsersData(event) {
+    const getArrayFromLocalStorage = JSON.parse(localStorage.getItem('users'))
+    const tableUserEmail = event.target.dataset.tableBtnEdit
+    
 }
