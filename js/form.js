@@ -16,10 +16,10 @@ class Form {
     }
     registration() {
         if (this.regExp.email.test(this.input.signUp.email.value) && this.regExp.email.password.test(this.input.signUp.password.value) && this.regExp.phone.test(this.input.signUp.phone.value) && this.regExp.city.test(this.input.signUp.city.value)) {
-            window.localStorage.setItem('login', JSON.stringify(this.input.signUp.email.value))
-            window.localStorage.setItem('password', JSON.stringify(this.input.signUp.password.value))
-            window.localStorage.setItem('phone', JSON.stringify(this.input.signUp.phone.value))
-            window.localStorage.setItem('country', JSON.stringify(this.input.signUp.city.value))
+            localStorage.setItem('login', JSON.stringify(this.input.signUp.email.value))
+            localStorage.setItem('password', JSON.stringify(this.input.signUp.password.value))
+            localStorage.setItem('phone', JSON.stringify(this.input.signUp.phone.value))
+            localStorage.setItem('country', JSON.stringify(this.input.signUp.city.value))
             this.modal.container.style.display = 'block'
             this.modal.text.innerText = 'Are you registred!'
             console.log(true)

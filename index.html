@@ -9,9 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Вход</title>
+    <title>Welcome!</title>
 </head>
-<body>
+<body id="body">
     <div class="form_container">
         <!-- sign in-->
         <form class="form_sign-in not_active" id="form_sign-in" action="#">
@@ -43,10 +43,24 @@
         <!-- modal window -->
         <div class="modal">
             <div class="modal_content">
-                <span id="modal-text"></span>
+                <span id="modal_text"></span>
             </div>
         </div>
     </div>
-    <script type="module" src="script.js"></script>
+    <div class="wrapper">
+        <table id="users_table">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Users</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class='users_table_body'>
+                <!-- interactively added tags -->
+            </tbody>
+        </table>
+    </div>
+    <script type="module" src="./js/script.js"></script>
 </body>
 </html>
